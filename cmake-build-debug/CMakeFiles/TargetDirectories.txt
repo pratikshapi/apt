@@ -1,3 +1,0 @@
-/Users/pratiksha/apt/cmake-build-debug/CMakeFiles/apt.dir
-/Users/pratiksha/apt/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/pratiksha/apt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
