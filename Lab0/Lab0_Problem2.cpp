@@ -35,19 +35,45 @@ void oneMoreOne(int number){
 
 /*
  * This is main function or entrypoint for the code.
- * This function checks for edge cases and runs oneMoreOne function.
+ * This function checks for edge cases else runs oneMoreOne
+ * Edge Cases include not a number, starts with 0, negative numbers, floating points
 */
 int main(){
 
-    cout << "Please enter the starting number n (0 to stop): ";
-    int number = 0;
-    while (cin >> number){
+    std::string number_str;
+    string error_statement = "Invalid input!! Please try again.";
+    string cout_statement = "Please enter the starting number n (0 to stop): ";
+
+    cout << cout_statement;
+
+    while(std::getline(cin, number_str, '\n')){
 
         // define the edge cases, else run the operation
-        if (number == 0) break;
-        if (number < 0) cout << "Invalid input!! Please try again." << endl;
-        else oneMoreOne(number);
-        cout << "Please enter the starting number n (0 to stop): ";
+        try {
+            int number = stoi(number_str);
+            if (number_str.find(",") != std::string::npos){
+                cout << error_statement << endl;
+            }
+            else if (number_str.find(".") != std::string::npos){
+                cout << error_statement << endl;
+            }
+            else if (number == 0 and number_str.length()>1) {
+                cout << error_statement << endl;
+            }
+            else if (number == 0) break;
+            else if (number_str.rfind("0", 0) == 0) {
+                cout << error_statement << endl;
+            }
+            else if (number < 0) {
+                cout << error_statement << endl;
+            }
+            else oneMoreOne(number);
+        }
+        catch(std::invalid_argument& e){
+            cout << error_statement << endl;
+        }
+
+        cout << cout_statement;
     }
     return 0;
 }
