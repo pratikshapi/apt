@@ -1,0 +1,192 @@
+/*
+33333333333333333333333333333
+31111111111110311111111111103
+31000010000010310000010000103
+32033310333310310333310333203
+31033310333310310333310333103
+31111111111111111111111111103
+31000010010000000010010000103
+31033310310333333310310333103
+31111110311110311110311111103
+30000010300000300000310000003
+33333310333300300333310333333
+33333310300000000000310333333
+33333310300000000000310333333
+33333310300333333300310333333
+00000010000300000300010000000
+00000010000300000300010000000
+33333310300333333300310333333
+33333310300000000000310333333
+33333310300000000000310333333
+33333310300333333300310333333
+31111111111110311111111111103
+31000010000010310000010000103
+31033310333310310333310333103
+32110311111111111111110311203
+30010310010000000010010310003
+33310310310333333310310310333
+31111110311110311110311111103
+31000000300010310000300000103
+31033333333310310333333333103
+31111111111111111111111111103
+30000000000000000000000000003
+33333333333333333333333333333
+*/
+
+
+/*
+            // check for bounds
+
+            // flip pacman
+            // if (Keyboard::isKeyPressed(Keyboard::Left) && pacmanSide == side::RIGHT)
+            // {
+            //     spritePacman.setRotation(-180.f);
+            // }
+            // if (Keyboard::isKeyPressed(Keyboard::Right) && pacmanSide == side::LEFT)
+            // {
+            //     spritePacman.setRotation(+180.f);
+            // }
+
+
+    // Texture textureOrange;
+    // textureOrange.loadFromFile("graphics/orange_ghost.bmp");
+    // Sprite spriteOrange;
+    // spriteOrange.setTexture(textureOrange);
+    // spriteOrange.setPosition(0, 200);
+
+                               // temp_x = rand() % 29;
+                            // temp_y = rand() % 32;
+                            // keep changing until the position is not wall
+                            // while (grid[temp_x][temp_y] == 3)
+                            // {
+                            //     temp_x = rand() % 29;
+                            //     temp_y = rand() % 32;
+                            // }
+                            // spriteGhost[idx].setPosition(temp_x * CELL_SIZE, temp_y * CELL_SIZE);
+
+            // acceptInput = false;
+            // cout<< "x and y " << spritePacman.getPosition().x << " " << spritePacman.getPosition().y <<endl;
+
+            // power up functionality for ghost to die
+
+
+            // window.draw(spriteBlue);
+            // window.draw(spriteOrange);
+            // window.draw(spritePink);
+            // window.draw(spriteRed);
+
+
+
+// switch (ghostDirection[idx])
+                            // {
+                            // case side::LEFT:
+                            // {
+                            //     tempGhostDirection = {
+                            //         side::RIGHT, side::DOWN, side::UP
+                            //     };
+                            //     ghostDirection[idx] = tempGhostDirection[rand()%2];
+                            //     break;
+                            // }
+                            // case side::RIGHT:
+                            // {
+                            //     tempGhostDirection = {
+                            //         side::LEFT, side::DOWN, side::UP
+                            //     };
+                            //     ghostDirection[idx] = tempGhostDirection[rand()%2];
+                            //     // break;
+                            //     // ghostDirection[idx] = side::LEFT;
+                            //     break;
+                            // }
+                            // case side::UP:
+                            // {
+                            //     tempGhostDirection = {
+                            //         side::LEFT, side::DOWN, side::RIGHT
+                            //     };
+                            //     ghostDirection[idx] = tempGhostDirection[rand()%2];
+                            //     // ghostDirection[idx] = side::DOWN;
+                            //     break;
+                            // }
+
+                            // case side::DOWN:
+                            // {
+                            //     tempGhostDirection = {
+                            //         side::LEFT, side::UP, side::RIGHT
+                            //     };
+                            //     ghostDirection[idx] = tempGhostDirection[rand()%2];
+                            //     break;
+                            // }
+
+                            // default:
+                            //     break;
+                            // }
+
+                            // while (tempGhostDirection == ghostDirection[idx])
+                            // {
+                            //     ghostDirection[idx] = static_cast<side>(rand() % side::DOWN);
+                            // }
+                            // spriteGhost[idx].setPosition(
+                            //         spriteGhost[idx].getPosition().x,
+                            //         spriteGhost[idx].getPosition().y);
+
+                            // break;
+
+                            // if (ghostDirection[idx] == side::LEFT)
+                            // {
+                            //     spriteGhost[idx].setPosition(
+                            //         spriteGhost[idx].getPosition().x - GHOST_SPEED,
+                            //         spriteGhost[idx].getPosition().y);
+
+                            //     if (spriteGhost[idx].getPosition().x < X_LEFT)
+                            //     {
+                            //         spriteGhost[idx].setPosition(
+                            //             X_RIGHT,
+                            //             spriteGhost[idx].getPosition().y);
+                            //     }
+                            // }
+                            // else if (ghostDirection[idx] == side::RIGHT)
+                            // {
+                            //     spriteGhost[idx].setPosition(
+                            //         spriteGhost[idx].getPosition().x + GHOST_SPEED,
+                            //         spriteGhost[idx].getPosition().y);
+                            //     if (spriteGhost[idx].getPosition().x < X_LEFT)
+                            //     {
+                            //         spriteGhost[idx].setPosition(
+                            //             X_RIGHT,
+                            //             spriteGhost[idx].getPosition().y);
+                            //     }
+                            // }
+                            // else if (ghostDirection[idx] == side::UP)
+                            // {
+                            //     spriteGhost[idx].setPosition(
+                            //         spriteGhost[idx].getPosition().x,
+                            //         spriteGhost[idx].getPosition().y - GHOST_SPEED);
+                            // }
+                            // else
+                            // {
+                            //     spriteGhost[idx].setPosition(
+                            //         spriteGhost[idx].getPosition().x,
+                            //         spriteGhost[idx].getPosition().y + GHOST_SPEED);
+                            // }
+
+
+
+
+    // Sprite spriteOrange;
+    // spriteOrange.setTexture(textureOrange);
+    // spriteOrange.setPosition(0, 200);
+
+
+    // Sprite spritePink;
+    // spritePink.setTexture(texturePink);
+    // spritePink.setPosition(0, 300);
+
+    // Sprite spriteRed;
+    // spriteRed.setTexture(textureRed);
+    // spriteRed.setPosition(0, 400);
+
+
+    // Sprite spriteBlue;
+    // spriteBlue.setTexture(textureBlue);
+    // spriteBlue.setPosition(0, 500);
+
+*/

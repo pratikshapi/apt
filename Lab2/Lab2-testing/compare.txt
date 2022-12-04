@@ -1,0 +1,25 @@
+Size	| Without OpenMP	| With OpenMP
+------------------------------------------
+2	    | 0m0.012s	        | 0m0.150s
+5	    | 0m0.009s	        | 0m0.023s
+10	    | 0m0.010s	        | 0m0.014s
+100     | 0m0.023s	        | 0m0.022s
+200	    | 0m0.100s	        | 0m0.067s
+500	    | 0m0.552s	        | 0m0.323s
+1000	| 0m2.889s	        | 0m1.242s
+1500	| 0m13.050s	        | 0m3.225s
+2000	| 0m49.897s	        | 0m6.770s
+3000	| 3m7.102s	        | 0m18.259s
+40000	| 5m11.220s	        | 0m38.714s
+
+
+In the above table, I have jotted down the time taken for multiplying matrix A of dimension (sizexsize) 
+and B of dimension (sizexsize) to output the resultant array of (sizexsize) dimension.
+
+As the size increases for the matrix A and B, the time taken by OpenMP setup is better than that of 
+Non OpenMP setup. This is because of the massive parallelisation provided by OpenMP. 
+
+For smaller sizes of input matrices, the Non OpenMP setup performs better, because the time taken to 
+spin up threads and do the computation in OpenMP takes longer than single-threaded computation in 
+Non-OpenMP setup.
+
