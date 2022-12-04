@@ -1,0 +1,20 @@
+# pack-refs with: peeled fully-peeled sorted 
+e08b1f1b7e5eaaed106ab3c47d0d2fb3210c049b refs/remotes/origin/2.1_branch
+3417ba48d1c78fae42f7c7bb117a3e4975b54394 refs/remotes/origin/SDL
+5763ff47c685323e5e3ee42ff70e92b422f1ef52 refs/remotes/origin/gh-pages
+e1b0cfb30ee4fdb0d3052956b1e53b6da1888565 refs/remotes/origin/gh-pages-shaderread
+c9d32e4352581780b022f258d312f50d521a8d60 refs/remotes/origin/gh-pages-toc
+316cccc5f76f47f09c16089d98be284b689e057d refs/remotes/origin/master
+7e3a60a0e24be0b8171bc36c639048ca21da878e refs/tags/0006_33
+9e072d96069c4818f9156c82f5f025f477520363 refs/tags/0007_21
+61c8cc370f1afda08db500bc65562b4cd7fb2648 refs/tags/0007_33
+14f16a0427cafa84e3575756398985f832fea295 refs/tags/0009_33
+2257fbdf3781f377c0c47737cd43439c80dd6a35 refs/tags/0010_33
+b4625f0be25095b00d48b72c1c93cb32481edbf7 refs/tags/0011_21
+ed1c1e785fbb3f280161ff4ac1446e35085c9b64 refs/tags/0011_33
+7ffae25fb833b572aaccf4aef7acc2767f1476e9 refs/tags/0013_21
+ea050049fb68dcc605ff519df0d0b6cfc5061847 refs/tags/0013_33
+a6a10ad0c78ce000fa0a727beea034e1c0e1ea53 refs/tags/OpenGL-tutorial_0015_21
+^e08b1f1b7e5eaaed106ab3c47d0d2fb3210c049b
+2fd1a5b86f1d807ae4dd0c8ea859037b6239f04f refs/tags/OpenGL-tutorial_0015_33
+^820905bc2c6e46bfb9a04fc4ecd1577cd1667692
