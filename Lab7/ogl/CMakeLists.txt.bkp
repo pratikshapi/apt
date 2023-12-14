@@ -216,9 +216,30 @@ add_executable(tutorial09_vbo_indexing
 	tutorial09_vbo_indexing/StandardShading.vertexshader
 	tutorial09_vbo_indexing/StandardShading.fragmentshader
 )
-target_link_libraries(tutorial09_vbo_indexing
-	${ALL_LIBS}
+
+# target_include_directories(tutorial09_AssImp
+# 						"${CMAKE_CURRENT_SOURCE_DIR}/tutorial09_vbo_indexing/source"
+# 						"${CMAKE_CURRENT_SOURCE_DIR}/tutorial09_vbo_indexing/../../FreeImage/Dist"
+
+# )
+# target_link_libraries(tutorial09_vbo_indexing
+# 	${ALL_LIBS}
+# 	assimp
+# 	"${CMAKE_CURRENT_SOURCE_DIR}/tutorial09_vbo_indexing/../../FreeImage/Dist/libfreeimage.a"
+# )
+
+
+
+target_include_directories(tutorial09_AssImp PUBLIC
+						"${CMAKE_CURRENT_SOURCE_DIR}/tutorial09_vbo_indexing/source"
+						"${CMAKE_CURRENT_SOURCE_DIR}/../FreeImage/Dist/x64/Release")
+target_link_libraries(tutorial09_AssImp
+					${ALL_LIBS}
+					assimp
+					"${CMAKE_CURRENT_SOURCE_DIR}/../FreeImage/Dist/x64/FreeImage.lib"
+					#"${CMAKE_CURRENT_SOURCE_DIR}/../FreeImage/Dist/libfreeimage.a"
 )
+
 # Xcode and Visual working directories
 set_target_properties(tutorial09_vbo_indexing PROPERTIES XCODE_ATTRIBUTE_CONFIGURATION_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tutorial09_vbo_indexing/")
 create_target_launcher(tutorial09_vbo_indexing WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tutorial09_vbo_indexing/")
@@ -226,26 +247,24 @@ create_target_launcher(tutorial09_vbo_indexing WORKING_DIRECTORY "${CMAKE_CURREN
 # Tutorial 9 - AssImp model loading
 add_executable(tutorial09_AssImp
 	tutorial09_vbo_indexing/tutorial09_AssImp.cpp
-        tutorial09_vbo_indexing/source/assimp_model.cpp
-        tutorial09_vbo_indexing/source/texture.cpp
-        tutorial09_vbo_indexing/source/vertexBufferObject.cpp
+	tutorial09_vbo_indexing/source/assimp_model.cpp
+	tutorial09_vbo_indexing/source/texture.cpp
+	tutorial09_vbo_indexing/source/vertexBufferObject.cpp
 	common/shader.cpp
 	common/shader.hpp
 	common/controls.cpp
 	common/controls.hpp
+	common/texture.cpp
+	common/texture.hpp
 	common/objloader.cpp
 	common/objloader.hpp
 	
 	tutorial09_vbo_indexing/StandardShading.vertexshader
 	tutorial09_vbo_indexing/StandardShading.fragmentshader
 )
-target_include_directories(tutorial09_AssImp PUBLIC 
-                           "${CMAKE_CURRENT_SOURCE_DIR}/tutorial09_vbo_indexing/source"
-                           "${CMAKE_CURRENT_SOURCE_DIR}/../FreeImage/Dist")
 target_link_libraries(tutorial09_AssImp
 	${ALL_LIBS}
 	assimp
-	"${CMAKE_CURRENT_SOURCE_DIR}/../FreeImage/Dist/libfreeimage.a"
 )
 set_target_properties(tutorial09_AssImp PROPERTIES COMPILE_DEFINITIONS "USE_ASSIMP")
 # Xcode and Visual working directories
@@ -781,3 +800,4 @@ add_custom_command(
 elseif (${CMAKE_GENERATOR} MATCHES "Xcode" )
 
 endif (NOT ${CMAKE_GENERATOR} MATCHES "Xcode" )
+

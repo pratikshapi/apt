@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
-
+#include <thread>
 // Include GLEW
 #include <GL/glew.h>
 
@@ -20,6 +20,7 @@ using namespace glm;
 #include <common/controls.hpp>
 #include <common/objloader.hpp>
 #include <common/vboindexer.hpp>
+#include "source/assimp_model.h"
 
 int main( void )
 {
@@ -92,6 +93,9 @@ int main( void )
 	
 	// Get a handle for our "myTextureSampler" uniform
 	GLuint TextureID  = glGetUniformLocation(programID, "myTextureSampler");
+	CAssimpModel model;
+	model.LoadModelFromFile("obj_static/map_static.obj");
+	CAssimpModel::FinalizeVBO();
 
 	// Read our .obj file
 	std::vector<unsigned short> indices;
@@ -225,6 +229,8 @@ int main( void )
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
 	} // Check if the ESC key was pressed or the window was closed
 	while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&

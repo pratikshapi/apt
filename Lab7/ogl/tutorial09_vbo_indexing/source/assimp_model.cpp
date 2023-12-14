@@ -1,6 +1,6 @@
 #include "common_header.h"
 
-#include "win_OpenGLApp.h"
+// #include "win_OpenGLApp.h"
 
 #include "assimp_model.h"
 
@@ -11,6 +11,10 @@
 #include <assimp/postprocess.h>     // Post processing flags
 
 CVertexBufferObject CAssimpModel::vboModelData;
+#define UINT unsigned int
+#ifndef BYTE
+#define BYTE uint8_t 
+#endif
 UINT CAssimpModel::uiVAO;
 vector<CTexture> CAssimpModel::tTextures;
 
@@ -67,7 +71,7 @@ bool CAssimpModel::LoadModelFromFile(char* sFilePath)
 
 	if(!scene)
 	{
-		MessageBox(appMain.hWnd, "Couldn't load model ", "Error Importing Asset", MB_ICONERROR);
+		fprintf(stderr, "Unable to load the file!!\n");
 		return false;
 	}
 

@@ -22,6 +22,7 @@ glm::mat4 getProjectionMatrix(){
 
 // Initial position : on +Z
 glm::vec3 position = glm::vec3( 0, 0, 5 ); 
+double radius = 2000.0f;
 // Initial horizontal angle : toward -Z
 float horizontalAngle = 3.14f;
 // Initial vertical angle : none
@@ -44,54 +45,90 @@ void computeMatricesFromInputs(){
 	float deltaTime = float(currentTime - lastTime);
 
 	// Get mouse position
-	double xpos, ypos;
-	glfwGetCursorPos(window, &xpos, &ypos);
+	double xpos, ypos, zpos;
+	// glfwGetCursorPos(window, &xpos, &ypos);
 
-	// Reset mouse position for next frame
-	glfwSetCursorPos(window, 1024/2, 768/2);
+	// // Reset mouse position for next frame
+	// glfwSetCursorPos(window, 1024/2, 768/2);
 
-	// Compute new orientation
-	horizontalAngle += mouseSpeed * float(1024/2 - xpos );
-	verticalAngle   += mouseSpeed * float( 768/2 - ypos );
+	// // Compute new orientation
+	// horizontalAngle += mouseSpeed * float(1024/2 - xpos );
+	// verticalAngle   += mouseSpeed * float( 768/2 - ypos );
 
-	// Direction : Spherical coordinates to Cartesian coordinates conversion
-	glm::vec3 direction(
-		cos(verticalAngle) * sin(horizontalAngle), 
-		sin(verticalAngle),
-		cos(verticalAngle) * cos(horizontalAngle)
-	);
+	// // Direction : Spherical coordinates to Cartesian coordinates conversion
+	// glm::vec3 direction(
+	// 	cos(verticalAngle) * sin(horizontalAngle), 
+	// 	sin(verticalAngle),
+	// 	cos(verticalAngle) * cos(horizontalAngle)
+	// );
 	
-	// Right vector
-	glm::vec3 right = glm::vec3(
-		sin(horizontalAngle - 3.14f/2.0f), 
-		0,
-		cos(horizontalAngle - 3.14f/2.0f)
-	);
+	// // Right vector
+	// glm::vec3 right = glm::vec3(
+	// 	sin(horizontalAngle - 3.14f/2.0f), 
+	// 	0,
+	// 	cos(horizontalAngle - 3.14f/2.0f)
+	// );
 	
-	// Up vector
-	glm::vec3 up = glm::cross( right, direction );
+	// // Up vector
+	// glm::vec3 up = glm::cross( right, direction );
 
-	// Move forward
-	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
-		position += direction * deltaTime * speed;
+	//Up vector
+	// glm::vec3 up(0.0f, 1.0f, 0.0);
+
+	// // Move forward
+	// if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
+	// 	position += direction * deltaTime * speed;
+	// }
+	// // Move backward
+	// if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS){
+	// 	position -= direction * deltaTime * speed;
+	// }
+	// // Strafe right
+	// if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
+	// 	position += right * deltaTime * speed;
+	// }
+	// // Strafe left
+	// if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
+	// 	position -= right * deltaTime * speed;
+	// }
+
+
+	// Up Vector
+	glm::vec3 up(0.0f, 1.0f, 0.0); //= glm::cross(right, direction);
+
+	// Move forward 
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS){
+		radius -=2.0f;
 	}
-	// Move backward
-	if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS){
-		position -= direction * deltaTime * speed;
+	// Move backward 
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS){
+		radius +=2.0f;
 	}
-	// Strafe right
-	if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
-		position += right * deltaTime * speed;
+	// Strafe right 
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS){
+		horizontalAngle += 0.50f;
 	}
-	// Strafe left
-	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
-		position -= right * deltaTime * speed;
+	// Strafe left 
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS){
+		verticalAngle += 0.50f;
 	}
+	// Tilt up
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS){
+		radius -= 0.10f;
+	}
+	// Tilt down
+	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS){
+		radius += 0.10f;
+	}
+	xpos = radius * cos(glm::radians(verticalAngle)) * sin(glm::radians(horizontalAngle));
+	ypos = radius * sin(glm::radians(verticalAngle));
+	zpos = radius * cos(glm::radians(verticalAngle)) * cos(glm::radians(horizontalAngle));
+	position = glm::vec3(xpos, ypos, zpos);
 
 	float FoV = initialFoV;// - 5 * glfwGetMouseWheel(); // Now GLFW 3 requires setting up a callback for this. It's a bit too complicated for this beginner's tutorial, so it's disabled instead.
 
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-	ProjectionMatrix = glm::perspective(FoV, 4.0f / 3.0f, 0.1f, 10000.0f);
+	ProjectionMatrix = glm::perspective(glm::radians(FoV), 4.0f / 3.0f, 0.1f, 10000.0f);
 	glm::vec3 origin = glm::vec3( 0, 0, 0 ); 
 	// Camera matrix
 	ViewMatrix       = glm::lookAt(
